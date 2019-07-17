@@ -4,13 +4,13 @@ require File.expand_path('../../config/environment', __FILE__)
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
-#require 'spec_helper'
+require 'spec_helper'
 require 'rspec/rails'
+require 'rspec/autorun'
 require 'factory_bot'
 require 'devise'
 #require 'capybara/rspec'
 #include Capybara::DSL
-
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
