@@ -6,8 +6,8 @@ RSpec.describe Api::V1::UsersController, type: :controller do
 
   describe "GET #show" do
     before (:each) do
-      @user = FactoryBot.create :user
-      get :show, id: @user.id, format: :json
+      @user = FactoryBot.create(:user)
+      get :show, params: { id:  @user.id }, format: :json
     end
 
     it "returns the information about a reporter on hash" do
@@ -22,8 +22,8 @@ RSpec.describe Api::V1::UsersController, type: :controller do
 
     context 'when is sucessfuly created' do
       before(:each) do
-        @user_attributes = Factorybot.attributes_for :user
-        post :create, { user: @user_attributes }, format: :json
+        @user_attributes = Factorybot.attributes_for(:user)
+        post :create, params: { user: @user_attributes }, format: :json
       end
 
       it 'renders the json representation for the user record just created' do
