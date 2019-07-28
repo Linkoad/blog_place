@@ -22,7 +22,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
 
     context 'when is sucessfuly created' do
       before(:each) do
-        @user_attributes = Factorybot.attributes_for(:user)
+        @user_attributes = FactoryBot.attributes_for(:user)
         post :create, params: { user: @user_attributes }, format: :json
       end
 
@@ -36,7 +36,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
 
     context 'when is not created' do
       before(:each) do
-        @invalid_user_attributes = { password: '12345678',
+        @invalid_user_attributes = FactoryBot.invalid_user_attributes_for { password: '12345678',
                                      password_confirmation: '12345678' }
         post :create, { user: @invalid_user_attributes }, format: :json
       end
