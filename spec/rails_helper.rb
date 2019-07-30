@@ -18,9 +18,12 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
-  #config.include Request::JsonHelpers, type: :controller
+  config.include Rails.application.routes.url_helpers
+  config.include Request::JsonHelpers, type: :controller
+  config.include FactoryBot::Syntax::Methods
+  config.include(Shoulda::Matchers::ActionController, { type: :model, file_path: /spec\/controllers/})
   #config.include Request::SignedRequestHelpers, type: :controller
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::TestHelpers, type: :view
   config.include Capybara::DSL
 end
