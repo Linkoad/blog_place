@@ -23,15 +23,7 @@ describe Api::V1::UsersController do
 
     context "when is successfully created" do
       before(:each) do
-<<<<<<< HEAD
-<<<<<<< HEAD
-        @user_attributes = FactoryBot.attributes_for :user
-=======
         @user_attributes = FactoryBot.attributes_for(:user)
->>>>>>> 295650a67ca231ab31fb354acb19ab54d28d564a
-=======
-        @user_attributes = FactoryBot.attributes_for(:user)
->>>>>>> 295650a67ca231ab31fb354acb19ab54d28d564a
         post :create, params: { user: @user_attributes }, format: :json
       end
 
@@ -45,21 +37,11 @@ describe Api::V1::UsersController do
 
     context "when is not created" do
       before(:each) do
-<<<<<<< HEAD
-<<<<<<< HEAD
         # notice I'm not including the email
         @invalid_user_attributes = { password: "12345678",
-
                                      password_confirmation: "12345678" }
-        post :create, params: { user: @invalid_user_attributes },
-          format: :json
-=======
-=======
->>>>>>> 295650a67ca231ab31fb354acb19ab54d28d564a
-        @invalid_user_attributes = FactoryBot.invalid_user_attributes_for { password: '12345678',
-                                     password_confirmation: '12345678' }
-        post :create, { user: @invalid_user_attributes }, format: :json
->>>>>>> 295650a67ca231ab31fb354acb19ab54d28d564a
+
+        post :create, params: { user: @invalid_user_attributes }, format: :json
       end
 
       it "renders an errors json" do
@@ -122,6 +104,5 @@ describe Api::V1::UsersController do
     end
 
     it { should respond_with 204 }
-
   end
 end
