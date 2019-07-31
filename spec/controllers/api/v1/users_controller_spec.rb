@@ -60,7 +60,7 @@ describe Api::V1::UsersController do
 
   describe "PUT/PATCH #update" do
     before(:each) do
-      @user = FactoryBot.create :user
+      @user = FactoryBot.create(:user)
     end
 
     context "when is successfully updated" do
@@ -71,7 +71,7 @@ describe Api::V1::UsersController do
 
       it "renders the json representation for the updated user" do
         user_response = JSON.parse(response.body, symbolize_names: true)
-        expect(user_response[:email]).to eql(user_response) 
+        expect(user_response[:email]).to eql("newmail@example.com")
       end
 
       it { should respond_with 422 }

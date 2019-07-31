@@ -23,7 +23,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include(Shoulda::Matchers::ActionController, { type: :model, file_path: /spec\/controllers/})
   #config.include Request::SignedRequestHelpers, type: :controller
-  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::TestHelpers, type: :controller
   config.include Devise::TestHelpers, type: :view
   config.include Capybara::DSL
 end
