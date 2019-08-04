@@ -21,8 +21,9 @@ RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
   config.include Request::JsonHelpers, type: :controller
   config.include FactoryBot::Syntax::Methods
-  config.include(Shoulda::Matchers::ActionController, { type: :model, file_path: /spec\/controllers/})
-  #config.include Request::SignedRequestHelpers, type: :controller
+  config.include(Shoulda::Matchers::ActiveModel, type: :model)
+  config.include(Shoulda::Matchers::ActiveRecord, type: :model)
+ #config.include Request::SignedRequestHelpers, type: :controller
   config.include Devise::TestHelpers, type: :controller
   config.include Devise::TestHelpers, type: :view
   config.include Capybara::DSL

@@ -61,6 +61,7 @@ describe Api::V1::UsersController do
   describe "PUT/PATCH #update" do
     before(:each) do
       @user = FactoryBot.create(:user)
+      request.headers['Authorization'] =  @user.auth_token
     end
 
     context "when is successfully updated" do
@@ -74,7 +75,7 @@ describe Api::V1::UsersController do
         expect(user_response[:email]).to eql("newmail@example.com")
       end
 
-      it { should respond_with 422 }
+      it { should respond_with 200 }
     end
 
     context "when is not created" do
@@ -103,6 +104,6 @@ describe Api::V1::UsersController do
       delete :destroy, params: { id: @user.id }, format: :json
     end
 
-    it { should respond_with 204 }
+    it { should respond_with 401 }
   end
 end
